@@ -112,3 +112,55 @@ Route::get('pesan/{ma?}/{mi?}/{ce?}', function ($a = null, $b = null, $c = null)
     }return $isi;
 });
 
+Route::get('/testmodel', function(){
+    $query = App\Models\Post::all();
+    return $query;
+});
+
+Route::get('/testmodel2', function(){
+    $query = App\Models\Post::find(1);
+    return $query;
+});
+
+Route::get('/testmodel3', function(){
+    $query = App\Models\Post::where('title', 'like', '%Bacaan Shalat%')->get();
+    return $query;
+});
+
+Route::get('/testmodel4', function(){
+    $query = App\Models\Post::find(1);
+    $query-> title = "Ciri Anak Sholeh";
+    $query->save();
+      return $query;
+});
+
+Route::get('/testmodel5', function() {
+    $post = App\Models\Post::find(7);
+    $post->delete();
+
+ });
+
+    Route::get('/testmodel6', function() {
+    $post = new App\Models\Post;
+    $post->title = "7 Amalan Pembuka Jodoh";
+    $post->content = "shalat malam, sedekah, puasa sunah, silaturahmi, senyum, doa, tobat";
+    $post->save();
+    return $post;
+
+    });
+
+    Route::get('/test-post', function(){
+        $query = App\Models\Post::all();
+        return view('test-post', compact('query'));
+    });
+
+    Route::get('/test-dosen', function(){
+        $query = App\Models\Dosen::all();
+        return view('test-dosen', compact('query'));
+    });
+
+    Route::get('/test-mahasiswa', function(){
+        $query = App\Models\Mahasiswa::all();
+        return view('test-mahasiswa', compact('query'));
+    });
+
