@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Mycontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -164,3 +165,27 @@ Route::get('/testmodel5', function() {
         return view('test-mahasiswa', compact('query'));
     });
 
+    Route::get('test-controller', [Mycontroller::class, 'test']);
+
+    Route::get('hero', [Mycontroller::class, 'heroes']);
+
+    Route::get('barang', [MyController::class, 'barang']);
+
+Route::get('pesanan', [MyController::class, 'pesanan']);
+
+Route::get('pembeli', [MyController::class, 'pembeli']);
+
+Route::get('pembelian', [MyController::class, 'pembelian']);
+
+Route::get('suplier', [MyController::class, 'suplier']);
+
+// parameter
+Route::get('barangs/{id}', [MyController::class, 'barangs']);
+
+Route::get('pesanans/{id}', [MyController::class, 'pesanans']);
+
+Route::get('pembelis/{id}', [MyController::class, 'pembelis']);
+
+Route::get('pembelians/{id}', [MyController::class, 'pembelians']);
+
+Route::get('supliers/{id}', [MyController::class, 'supliers']);
